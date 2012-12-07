@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>网站配置</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="/static/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/styles/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="/static/scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="/static/scripts/bootstrap.min.js" type="text/javascript"></script>
+  </head>
+  	<body>
+  		<div class="container">
+        <div style="width:400px;margin-top: 50px;margin-right: auto;margin-bottom: 0px;margin-left: auto;">
+      <form class="form-signin" method="post">
+        <h4 class="form-signin-heading">网站配置</h2>
+        <input type="text" class="input span2" placeholder="Site name" name="Title"><br>
+        <input type="text" class="input span2" placeholder="Email" name="Email"><br>
+        <h4 class="form-signin-heading">数据库配置</h2>
+        <input type="text" class="input span2" placeholder="location" name="DbHost"><br>
+        <input type="text" class="input span2" placeholder="Datebase name" name="dbName"><br>
+        <input type="text" class="input span2" placeholder="Datebase user" name="DbUser"><br>
+        <input type="password" class="input span2" name="DbPass" ><br>
+        <h4 class="form-signin-heading">配置验证</h2>
+         <input type="text" class="input span2" placeholder="Veri code" name="Veri"> <p class="text-error">配置验证项目为一次性配置，配置后不能修改，请慎重！</p>
+        <button class="btn btn-primary" type="submit">确定</button>
+      </form>
+    </div></div>
+	</body>
+</html>        
