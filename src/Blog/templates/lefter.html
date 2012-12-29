@@ -1,0 +1,36 @@
+{{define "lefter"}}
+<div class="sidebar-nav" style="border-top-width: 6px;border-top-style: solid;border-top-color: #1D1D1D;">
+        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>广告管理</a>
+        <ul id="dashboard-menu" class="nav nav-list collapse in">
+            <li><a href="/ad/index">广告列表</a></li>
+            <li ><a href="/ad/add">广告添加</a></li>           
+        </ul>
+
+        <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>管理员管理</a>
+        <ul id="accounts-menu" class="nav nav-list collapse">
+            <li ><a href="/admin/admin">管理员列表</a></li>
+            <li ><a href="/admin/adminadd">管理员添加</a></li>
+            <li ><a href="/admin/adminlog">登录日志</a></li>
+        </ul>
+
+        <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>统计报表 <i class="icon-chevron-up"></i></a>
+        <ul id="error-menu" class="nav nav-list collapse">
+            <li ><a href="/admin/ipreport">IP报表</a></li>
+            <li ><a href="/admin/pvreport">PV报表</a></li>
+            <li ><a href="/admin/regreport">注册数报表</a></li>
+            <li ><a href="/admin/buyreport">购买用户报表</a></li>
+        </ul>
+
+        <a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>网站主管理</a>
+        <ul id="legal-menu" class="nav nav-list collapse">
+            <li ><a href="/admin/site">网站主列表</a></li>
+            <li ><a href="/admin/siteadd">网站主添加</a></li>
+        </ul>
+
+        <a href="#mail-menu" class="nav-header" data-toggle="collapse"><i class="icon-envelope"></i>邮件广告管理</a>
+        <ul id="mail-menu" class="nav nav-list collapse">
+            <li ><a href="/admin/mail">邮件广告列表</a></li>
+            <li ><a href="/admin/mailadd">邮件广告添加</a></li>
+        </ul>
+    </div>
+{{end}}    
