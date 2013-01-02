@@ -8,6 +8,10 @@ import (
 	"db"
 )
 
+const token = "young123"
+const secret = "8aa2a6ae0b2a0e6c9390b8e3f6626b47"
+const SITE_ROOT = "http://127.0.0.1:12345/"
+
 type Entry struct{
 	Controller string
 	Action string

@@ -97,13 +97,13 @@
           <td>{{.Id}}</td>
           <td>{{.Name}}</td>
           <td><a href="{{.Url}}" target="_blank">连接地址</a></td>
-          <td>{{.Img}}</td>
+          <td><a href="http://127.0.0.1:12345{{.Img}}" target="_blank">{{.Img}}</a></td>
           <td>{{.Width}} x {{.Height}}</td>
           <td>{{.Addtime}}</td>
           <td><a href="/ad/code/{{.Id}}">点击获取</a></td>
           <td>
-              <a href="user.html"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+              <a href="/ad/edit/{{.Id}}"><i class="icon-pencil"></i></a>
+              <a href="/ad/del/{{.Id}}" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
           </td>
         </tr>
         {{end}}

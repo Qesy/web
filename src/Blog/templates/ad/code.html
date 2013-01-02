@@ -48,7 +48,7 @@
   <!--[if (gt IE 9)|!(IE)]><!--> 
   <body class=""> 
   <!--<![endif]-->
-{{template "header"}}
+{{template "header" .}}
 {{template "lefter"}}    
     <div class="content">        
         <div class="header">
@@ -73,10 +73,17 @@
 <div class="row-fluid">
 <div class="well">
     <div id="myTabContent" class="tab-content">
-      <div class="tab-pane active in" id="home">
-    
-        <label>广告代码</label>
-        <textarea name="textfield" class="span6" rows="6" id="textfield">http://127.0.0.1:12345/home/ad/{{.AdOne.Id}}</textarea>
+      <div class="tab-pane active in" id="home">    
+        <label>Iframe代码</label>
+        <textarea name="textfield" class="span6" rows="4" id="textfield">http://127.0.0.1:12345/home/ad/{{.AdOne.Id}}</textarea>
+      </div>
+      <div class="tab-pane active in" id="home">    
+        <label>图片地址</label>
+        <input name="textfield" class="span6" rows="4" id="textfield" value="http://127.0.0.1:12345{{.AdOne.Img}}" />
+      </div>
+      <div class="tab-pane active in" id="home">    
+        <label>连接地址</label>
+        <input name="textfield" class="span6" rows="4" id="textfield" value="http://127.0.0.1:12345/{{.AdOne.Url}}"/>
       </div>
   </div>
 
