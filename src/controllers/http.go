@@ -45,7 +45,7 @@ func DbConn() {
 }
 
 func DbDisconn() {
-	ConnDb.Close()
+	ConnDb.Conn.Close()
 }
 
 func SetCookie() {
