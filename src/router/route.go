@@ -20,15 +20,15 @@ func Fetch_url(url string, w http.ResponseWriter, r *http.Request) {
 		urlArr := strings.Split(url, "/")
 		if len(urlArr) <= 1{
 			e.Controller = urlArr[0]
-			e.Action = "index"
+			e.Action = DEFAULT_ACTION
 		}else{
 			e.Controller = urlArr[0]
 			if urlArr[1] == ""{
-				e.Action = "index"
+				e.Action = DEFAULT_ACTION
 			}else{
 				e.Action = urlArr[1]
 			}
-			e.Params = urlArr[2:len(urlArr)] 
+			e.Params = urlArr[2:len(urlArr)]
 		}
 	}	
 	fmt.Println(e)

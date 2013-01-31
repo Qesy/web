@@ -87,6 +87,60 @@ func (p *Entry)Api_order(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, string(b))
 }
 
+func (p *Entry)Api_mail(w http.ResponseWriter, r *http.Request) {
+	type temp map[string]string
+	jSon := temp{}
+	if r.FormValue("mail_id") == "" || r.FormValue("time") == "" || r.FormValue("uid") == "" || r.FormValue("ip") == "" || r.FormValue("goods_id") == "" {
+		jSon["httpCode"] = "403"	//-- 缺少参数 --
+		jSon["body"]	 = "Missing parameter !"
+		b, _ := json.Marshal(jSon)
+    	fmt.Fprintf(w, string(b))
+    	return
+	}	
+	if r.Header["Token"][0] == token && r.Header["Secret"][0] == secret {
+		result := mail(r.FormValue("uid"), r.FormValue("mail_id"), r.FormValue("goods_id"), r.FormValue("ip"), r.FormValue("time"))
+		if result == 0 {
+			jSon["httpCode"] = "404"	//-- 保存失败 --
+			jSon["body"]	 = "Api save failed !"
+		}else{
+			jSon["httpCode"] = "200"	//-- 保存成功 --
+			jSon["body"]	 = "Api success !"
+		}
+	}else{
+		jSon["httpCode"] = "400"	//-- 验证失败 --
+		jSon["body"]	 = "Api verification failed !"
+	}
+	b, _ := json.Marshal(jSon)
+    fmt.Fprintf(w, string(b))
+}
+
+func (p *Entry)Api_activity(w http.ResponseWriter, r *http.Request) {
+	type temp map[string]string
+	jSon := temp{}
+	if r.FormValue("activity_id") == "" || r.FormValue("time") == "" || r.FormValue("uid") == "" || r.FormValue("ip") == "" || r.FormValue("goods_id") == "" {
+		jSon["httpCode"] = "403"	//-- 缺少参数 --
+		jSon["body"]	 = "Missing parameter !"
+		b, _ := json.Marshal(jSon)
+    	fmt.Fprintf(w, string(b))
+    	return
+	}	
+	if r.Header["Token"][0] == token && r.Header["Secret"][0] == secret {
+		result := activity(r.FormValue("uid"), r.FormValue("activity_id"), r.FormValue("goods_id"), r.FormValue("ip"), r.FormValue("time"))
+		if result == 0 {
+			jSon["httpCode"] = "404"	//-- 保存失败 --
+			jSon["body"]	 = "Api save failed !"
+		}else{
+			jSon["httpCode"] = "200"	//-- 保存成功 --
+			jSon["body"]	 = "Api success !"
+		}
+	}else{
+		jSon["httpCode"] = "400"	//-- 验证失败 --
+		jSon["body"]	 = "Api verification failed !"
+	}
+	b, _ := json.Marshal(jSon)
+    fmt.Fprintf(w, string(b))
+}
+
 func ip(adid string, ip string, time string, adType string, domian string, refer string, ua string, goods_id string)int {
 	var result int
 	var err error
@@ -124,6 +178,32 @@ func order(adid string, uid string, order_id string, money string, real_money st
 	var err error
 	stmt, _ := ConnDb.Conn.Prepare("INSERT ad_order SET adid=?, uid=?, order_id=?, money=?, real_money=?, time=?")
     _, err = stmt.Exec(adid, uid, order_id, money, real_money, time)
+	if err != nil {
+    	result = 0
+    }else{
+    	result = 1
+    }
+    return result
+}
+
+func mail(uid string, mail_id string, goods_id string, ip string, time string) int {
+	var result int
+	var err error
+	stmt, _ := ConnDb.Conn.Prepare("INSERT ad_email SET uid=?, mail_id=?, goods_id=?, ip=?, time=?")
+    _, err = stmt.Exec(uid, mail_id, goods_id, ip, time)
+	if err != nil {
+    	result = 0
+    }else{
+    	result = 1
+    }
+    return result
+}
+
+func activity(uid string, activity_id string, goods_id string, ip string, time string) int {
+	var result int
+	var err error
+	stmt, _ := ConnDb.Conn.Prepare("INSERT ad_activity SET uid=?, activity_id=?, goods_id=?, ip=?, time=?")
+    _, err = stmt.Exec(uid, activity_id, goods_id, ip, time)
 	if err != nil {
     	result = 0
     }else{

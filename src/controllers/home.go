@@ -22,7 +22,7 @@ func (p *Entry)Home_ad(w http.ResponseWriter, r *http.Request) {
 	//fmt.Println(r.RemoteAddr)
 	//fmt.Println(p.Params[0])
 	w.Header().Set("Content-Type", "text/html")
-	if(p.Params[0] == "" || p.Params[0] == "0"){
+	if(len(p.Params) == 0 || p.Params[0] == "" || p.Params[0] == "0"){
 		fmt.Fprintf(w, "Get err !")
 		return
 	}	
