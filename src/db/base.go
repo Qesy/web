@@ -7,11 +7,11 @@ import (
 
 type SqlType struct{
 	Conn *sql.DB
-	Error string
+	Error error
 }
 
-func Connect() (*sql.DB, error){
-	return sql.Open("mysql", "ss:ss@tcp(localhost:3306)/ad?charset=utf8")
+func Connect(host string, name string, user string, password string) (*sql.DB, error){
+	return sql.Open("mysql", user+":"+password+"@tcp("+host+":3306)/"+name+"?charset=utf8")
 }
 
 func (sqlClass SqlType)Close() {

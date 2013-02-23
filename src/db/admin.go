@@ -1,7 +1,7 @@
 package db
 
 import(
-	//"fmt"
+	"fmt"
 )
 
 type Admin struct{
@@ -14,7 +14,12 @@ type Admin struct{
 func (sqlClass SqlType)GetUser(condStr string, field string, limit string) []Admin {
 	var user Admin
 	var users []Admin
-	rows, _ := sqlClass.Conn.Query("SELECT "+ field +" FROM admin WHERE "+condStr+" "+limit)
+	rows, err := sqlClass.Conn.Query("SELECT "+ field +" FROM admin WHERE "+condStr+" "+limit)
+	if err != nil {
+		fmt.Println(sqlClass)
+		fmt.Println(err)
+		return users
+	}
     var id int
     var username string
     var password string

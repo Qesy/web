@@ -68,3 +68,14 @@ func (p *Entry)Config_index(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, nil)
 
 }
+
+func Siteinfo()Config {
+	var cTemp Config
+	config, _ := ioutil.ReadFile("config/site")
+	jsondecode := json.Unmarshal(config, &cTemp)
+	if jsondecode != nil {
+		fmt.Println("Config jsondecode err !")
+		return cTemp
+	}
+	return cTemp
+}
