@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/web/!svn/ver/4/src/ad
+END
+main.exe
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/web/!svn/ver/1/src/ad/main.exe
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/web/!svn/ver/1/src/ad/.gitignore
+END
+.gitattributes
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/web/!svn/ver/1/src/ad/.gitattributes
+END
+main.go
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/web/!svn/ver/1/src/ad/main.go
+END
