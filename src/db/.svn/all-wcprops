@@ -1,13 +1,19 @@
 K 25
 svn:wc:ra_dav:version-url
-V 26
-/svn/web/!svn/ver/1/src/db
+V 27
+/svn/web/!svn/ver/20/src/db
+END
+order.go
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/web/!svn/ver/23/src/db/order.go
 END
 reg.go
 K 25
 svn:wc:ra_dav:version-url
-V 33
-/svn/web/!svn/ver/1/src/db/reg.go
+V 34
+/svn/web/!svn/ver/23/src/db/reg.go
 END
 mail.go
 K 25
@@ -19,19 +25,25 @@ ad.go
 K 25
 svn:wc:ra_dav:version-url
 V 32
-/svn/web/!svn/ver/1/src/db/ad.go
+/svn/web/!svn/ver/5/src/db/ad.go
 END
 admin.go
 K 25
 svn:wc:ra_dav:version-url
 V 35
-/svn/web/!svn/ver/1/src/db/admin.go
+/svn/web/!svn/ver/5/src/db/admin.go
 END
 ip.go
 K 25
 svn:wc:ra_dav:version-url
-V 32
-/svn/web/!svn/ver/1/src/db/ip.go
+V 33
+/svn/web/!svn/ver/23/src/db/ip.go
+END
+login.go
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/web/!svn/ver/24/src/db/login.go
 END
 base.go
 K 25

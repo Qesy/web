@@ -1,7 +1,19 @@
 K 25
 svn:wc:ra_dav:version-url
 V 40
-/svn/web/!svn/ver/4/src/ad/static/styles
+/svn/web/!svn/ver/6/src/ad/static/styles
+END
+bootstrap-responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/web/!svn/ver/6/src/ad/static/styles/bootstrap-responsive.css
+END
+bootstrap-responsive-fluid.css
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/web/!svn/ver/6/src/ad/static/styles/bootstrap-responsive-fluid.css
 END
 bootstrap-responsive.min.css
 K 25
@@ -9,11 +21,35 @@ svn:wc:ra_dav:version-url
 V 69
 /svn/web/!svn/ver/4/src/ad/static/styles/bootstrap-responsive.min.css
 END
+prometheus.css
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/web/!svn/ver/6/src/ad/static/styles/prometheus.css
+END
+bootstrap.css
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/web/!svn/ver/6/src/ad/static/styles/bootstrap.css
+END
 bootstrap.min.css
 K 25
 svn:wc:ra_dav:version-url
 V 58
 /svn/web/!svn/ver/4/src/ad/static/styles/bootstrap.min.css
+END
+style.css
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/web/!svn/ver/6/src/ad/static/styles/style.css
+END
+preview.css
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/web/!svn/ver/6/src/ad/static/styles/preview.css
 END
 theme.css
 K 25
@@ -26,4 +62,22 @@ K 25
 svn:wc:ra_dav:version-url
 V 57
 /svn/web/!svn/ver/1/src/ad/static/styles/font-awesome.css
+END
+menu.css
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/web/!svn/ver/6/src/ad/static/styles/menu.css
+END
+prettify.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/web/!svn/ver/6/src/ad/static/styles/prettify.css
+END
+wmd.css
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/web/!svn/ver/6/src/ad/static/styles/wmd.css
 END

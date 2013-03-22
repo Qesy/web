@@ -34,15 +34,19 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">    
         <label>Iframe代码</label>
-        <textarea name="textfield" class="span6" rows="4" id="textfield">http://127.0.0.1:12345/home/ad/{{.AdOne.Id}}</textarea>
+        <textarea name="textfield" class="span6" rows="4" id="textfield"><iframe src="http://{{.cTemp.SiteInfo.Domain}}:12345/home/ad/{{.AdOne.Id}}" width="{{.AdOne.Width}}" height="{{.AdOne.Height}}" frameborder="no" border='0' scrolling="no"></iframe></textarea>
+      </div>
+      <div class="tab-pane active in" id="home">    
+        <label>JS代码</label>
+        <textarea name="textfield" class="span6" rows="4" id="textfield">document.writeln("<a href=\"{{.AdOne.Url}}?adid={{.AdOne.Id}}&adtype=0\"><img src=\"http://{{.cTemp.SiteInfo.Domain}}:12345{{.AdOne.Img}}\"  width=\"{{.AdOne.Width}}\" height=\"{{.AdOne.Height}}\"/></a>");</textarea>
       </div>
       <div class="tab-pane active in" id="home">    
         <label>图片地址</label>
-        <input name="textfield" class="span6" rows="4" id="textfield" value="http://127.0.0.1:12345/{{.AdOne.Img}}" />
+        <input name="textfield" class="span6" rows="4" id="textfield" value="http://{{.cTemp.SiteInfo.Domain}}:12345{{.AdOne.Img}}" />
       </div>
       <div class="tab-pane active in" id="home">    
         <label>连接地址</label>
-        <input name="textfield" class="span6" rows="4" id="textfield" value="http://127.0.0.1:12345/{{.AdOne.Url}}"/>
+        <input name="textfield" class="span6" rows="4" id="textfield" value="{{.AdOne.Url}}?adid={{.AdOne.Id}}&adtype=0"/>
       </div>
   </div>
 

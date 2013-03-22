@@ -14,7 +14,7 @@ type Admin struct{
 func (sqlClass SqlType)GetUser(condStr string, field string, limit string) []Admin {
 	var user Admin
 	var users []Admin
-	rows, err := sqlClass.Conn.Query("SELECT "+ field +" FROM admin WHERE "+condStr+" "+limit)
+	rows, err := sqlClass.Conn.Query("SELECT "+ field +" FROM ad_admin "+condStr+" "+limit)
 	if err != nil {
 		fmt.Println(sqlClass)
 		fmt.Println(err)
@@ -35,8 +35,12 @@ func (sqlClass SqlType)GetUser(condStr string, field string, limit string) []Adm
 	return users
 }
 
+func (sqlClass SqlType)Add() {
+	
+}
+
 func (sqlClass SqlType)HaveUser(condStr string) int {
-	rows, _ := sqlClass.Conn.Query("SELECT COUNT(*) AS count FROM admin WHERE "+condStr)
+	rows, _ := sqlClass.Conn.Query("SELECT COUNT(*) AS count FROM ad_admin WHERE "+condStr)
 	var count int
 	for rows.Next(){
     		rows.Scan(&count);

@@ -13,6 +13,10 @@ type Ad struct{
 	Height int
 	Status int
 	Addtime int
+	Count int
+	IpCountArr IpCount
+	RegCountArr RegCount
+	OrderCountArr OrderCount
 }
 
 func (sqlClass SqlType)GetAd(condStr string, field string, limit string) []Ad {
@@ -40,4 +44,15 @@ func (sqlClass SqlType)GetAd(condStr string, field string, limit string) []Ad {
 			users =append(users,user)
 	}
 	return users
+}
+
+func (sqlClass SqlType)GetCount(condStr string, limit string) int {
+	var user Ad
+	adrows, _ := sqlClass.Conn.Query("SELECT COUNT(*) AS count FROM ad_list "+condStr+" "+limit)
+	var count int
+	for adrows.Next(){
+    		adrows.Scan(&count);
+    		user.Count = count
+	}
+	return user.Count
 }

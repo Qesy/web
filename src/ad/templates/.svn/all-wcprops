@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 36
-/svn/web/!svn/ver/4/src/ad/templates
+V 37
+/svn/web/!svn/ver/14/src/ad/templates
 END
 footer.html
 K 25
@@ -12,8 +12,8 @@ END
 lefter.html
 K 25
 svn:wc:ra_dav:version-url
-V 48
-/svn/web/!svn/ver/4/src/ad/templates/lefter.html
+V 49
+/svn/web/!svn/ver/23/src/ad/templates/lefter.html
 END
 hello.html
 K 25

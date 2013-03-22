@@ -19,8 +19,9 @@
         <div style="width:400px;margin-top: 50px;margin-right: auto;margin-bottom: 0px;margin-left: auto;">
       <form class="form-signin" method="post">
         <h4 class="form-signin-heading">网站配置</h2>
-        <input type="text" class="input span2" placeholder="Site name" name="Title"><br>
-        <input type="text" class="input span2" placeholder="Email" name="Email"><br>
+        <input type="text" class="input span2" placeholder="Site name" name="Title" value="{{.SiteInfo.Title}}"><br>
+        <input type="text" class="input span2" placeholder="Domain" name="Domain" value="{{.SiteInfo.Domain}}"><br>
+        <input type="text" class="input span2" placeholder="Email" name="Email" value="{{.SiteInfo.Email}}"><br>
         <h4 class="form-signin-heading">数据库配置</h2>
         <input type="text" class="input span2" placeholder="location" name="DbHost"><br>
         <input type="text" class="input span2" placeholder="Datebase name" name="DbName"><br>

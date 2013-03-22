@@ -1,13 +1,25 @@
 K 25
 svn:wc:ra_dav:version-url
 V 40
-/svn/web/!svn/ver/1/src/ad/static/images
+/svn/web/!svn/ver/7/src/ad/static/images
 END
 black-Linen.png
 K 25
 svn:wc:ra_dav:version-url
 V 56
 /svn/web/!svn/ver/1/src/ad/static/images/black-Linen.png
+END
+icon-calendar.gif
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/web/!svn/ver/7/src/ad/static/images/icon-calendar.gif
+END
+logo.png
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/web/!svn/ver/7/src/ad/static/images/logo.png
 END
 glyphicons-halflings-white.png
 K 25
@@ -20,4 +32,28 @@ K 25
 svn:wc:ra_dav:version-url
 V 65
 /svn/web/!svn/ver/1/src/ad/static/images/glyphicons-halflings.png
+END
+bg.png
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/web/!svn/ver/7/src/ad/static/images/bg.png
+END
+icon-mail.gif
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/web/!svn/ver/7/src/ad/static/images/icon-mail.gif
+END
+user.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/web/!svn/ver/7/src/ad/static/images/user.jpg
+END
+icon-search.png
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/web/!svn/ver/7/src/ad/static/images/icon-search.png
 END

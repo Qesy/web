@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>广告系统后台首页</title>
+    <link href="/static/styles/bootstrap.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/bootstrap-responsive.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/bootstrap-responsive-fluid.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/prometheus.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/preview.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/menu.css?v=19821122" rel="stylesheet" type="text/css" />
+    <script src="/static/scripts/jquery-latest.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/bootstrap.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/bootstrap.min.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/modernizr.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/menu.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/jquery.flot.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/jquery.flot.pie.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/excanvas.min.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/ajaxupload.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
+  <body> 
+  <!--<![endif]-->
+{{template "header" .}}
+{{template "lefter"}}
+    
+
+    <bodyer>
+    <div id="content" class="container-fluid">
+        
+       <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>用户名</th>
+          <th>修改</th>
+          <th>删除</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .userRs}}
+        <tr>
+          <td>{{.Id}}</td>
+          <td>{{.Username}}</td>
+          <td><a href="/admin/edit/{{.Id}}"><i class="icon-pencil"></i></a></td>
+          <td><a href="/admin/del/{{.Id}}" role="button" data-toggle="modal"><i class="icon-remove"></i></a></td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+{{template "footer"}}
+</bodyer>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>

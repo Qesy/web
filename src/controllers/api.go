@@ -60,6 +60,33 @@ func (p *Entry)Api_reg(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, string(b))
 }
 
+func (p *Entry)Api_login(w http.ResponseWriter, r *http.Request) {
+	type temp map[string]string
+	jSon := temp{}
+	if r.FormValue("ip") == "" || r.FormValue("adid") == "" || r.FormValue("time") == "" || r.FormValue("uid") == "" || r.FormValue("type") == ""{
+		jSon["httpCode"] = "403"	//-- 缺少参数 --
+		jSon["body"]	 = "Missing parameter !"
+		b, _ := json.Marshal(jSon)
+    	fmt.Fprintf(w, string(b))
+    	return
+	}
+	if r.Header["Token"][0] == token && r.Header["Secret"][0] == secret {
+		result := login(r.FormValue("adid"), r.FormValue("uid"), r.FormValue("type"), r.FormValue("time"), r.FormValue("ip"))
+		if result == 0 {
+			jSon["httpCode"] = "404"	//-- 保存失败 --
+			jSon["body"]	 = "Api save failed !"
+		}else{
+			jSon["httpCode"] = "200"	//-- 保存成功 --
+			jSon["body"]	 = "Api success !"
+		}
+	}else{
+		jSon["httpCode"] = "400"	//-- 验证失败 --
+		jSon["body"]	 = "Api verification failed !"
+	}
+	b, _ := json.Marshal(jSon)
+    fmt.Fprintf(w, string(b))
+}
+
 func (p *Entry)Api_order(w http.ResponseWriter, r *http.Request) {
 	type temp map[string]string
 	jSon := temp{}
@@ -145,7 +172,7 @@ func ip(adid string, ip string, time string, adType string, domian string, refer
 	var result int
 	var err error
 	countIp := ConnDb.HaveIp("ip="+ip+" && time = '"+time+"' && adid="+adid+"")
-	if countIp != 0 {
+	if countIp > 0 {
 		stmt, _ := ConnDb.Conn.Prepare("UPDATE ad_ip SET pv=pv+1 where adid = ? && ip="+ip+" && time = '"+time+"'")
 		_, err = stmt.Exec(adid)
 	}else{
@@ -165,6 +192,20 @@ func reg(adid string, ip string, uid string, time string)int {
 	var err error
 	stmt, _ := ConnDb.Conn.Prepare("INSERT ad_reg SET adid=?, ip=?, uid=?, time=?")
     _, err = stmt.Exec(adid, ip, uid, time)
+	if err != nil {
+    	result = 0
+    }else{
+    	result = 1
+    }
+    return result
+}
+
+func login(adid string, uid string, logintype string, time string, ip string)int {
+	var result int
+	var err error
+	fmt.Println("INSERT ad_login SET adid="+adid+", uid="+uid+", type="+logintype+", time="+time+", ip="+ip+"")
+	stmt, _ := ConnDb.Conn.Prepare("INSERT ad_login SET adid=?, uid=?, type=?, time=?, ip=?")
+    _, err = stmt.Exec(adid, uid, logintype, time, ip)
 	if err != nil {
     	result = 0
     }else{

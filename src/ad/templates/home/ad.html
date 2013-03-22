@@ -1,3 +1,3 @@
 <html><header></header><body style="padding:0px;margin:0px;">
-{{range .adRs}}<a href="{{.Url}}"><img src="{{.Img}}" width="{{.Width}}" height="{{.Height}}" border="0"></a>
-{{end}}</body></html>
+<a href="{{.adRs.Url}}?adid=1&adtype=0" target="_blank"><img src="http://{{.cTemp.SiteInfo.Domain}}:12345{{.adRs.Img}}" width="{{.adRs.Width}}" height="{{.adRs.Height}}" border="0" target="_blank"></a>
+</body></html>

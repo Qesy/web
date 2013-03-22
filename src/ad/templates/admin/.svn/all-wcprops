@@ -1,7 +1,19 @@
 K 25
 svn:wc:ra_dav:version-url
 V 42
-/svn/web/!svn/ver/4/src/ad/templates/admin
+/svn/web/!svn/ver/8/src/ad/templates/admin
+END
+log.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/web/!svn/ver/8/src/ad/templates/admin/log.html
+END
+edit.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/web/!svn/ver/8/src/ad/templates/admin/edit.html
 END
 index.html
 K 25
@@ -14,4 +26,16 @@ K 25
 svn:wc:ra_dav:version-url
 V 53
 /svn/web/!svn/ver/1/src/ad/templates/admin/login.html
+END
+add.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/web/!svn/ver/8/src/ad/templates/admin/add.html
+END
+list.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/web/!svn/ver/8/src/ad/templates/admin/list.html
 END

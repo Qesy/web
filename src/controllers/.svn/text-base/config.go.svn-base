@@ -24,6 +24,7 @@ type Db struct{
 
 type Site struct{
 	Title string
+	Domain string
 	Email string
 	Veri  string
 }
@@ -43,7 +44,7 @@ func (p *Entry)Config_index(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "Veri code err !")
 			return
 		}			
-		c.SiteInfo = Site{Title : r.FormValue("Title"), Email : r.FormValue("Email"), Veri : r.FormValue("Veri")}
+		c.SiteInfo = Site{Title : r.FormValue("Title"), Domain : r.FormValue("Domain"), Email : r.FormValue("Email"), Veri : r.FormValue("Veri")}
 		c.DbInfo = Db{DbHost : r.FormValue("DbHost"), DbName : r.FormValue("DbName"), DbUser : r.FormValue("DbUser"), DbPass : r.FormValue("DbPass")}
 		b, _ := json.Marshal(c)
 		file, err := os.Create("config/site")
@@ -65,7 +66,7 @@ func (p *Entry)Config_index(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "template not find !")
 		return
 	}
-	t.Execute(w, nil)
+	t.Execute(w, cTemp)
 
 }
 

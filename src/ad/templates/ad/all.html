@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>广告系统后台首页</title>
+    <link href="/static/styles/bootstrap.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/bootstrap-responsive.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/bootstrap-responsive-fluid.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/prometheus.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/preview.css?v=19821122" rel="stylesheet" type="text/css" />
+    <link href="/static/styles/menu.css?v=19821122" rel="stylesheet" type="text/css" />
+    <script src="/static/scripts/jquery-latest.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/bootstrap.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/bootstrap.min.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/modernizr.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/menu.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/jquery.flot.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/jquery.flot.pie.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/excanvas.min.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/ajaxupload.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/scripts/date.js?v=19821122" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+      var c = new Calendar("c");
+      document.write(c);
+
+    
+    </script>
+  </head>
+
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
+  <body> 
+  <!--<![endif]-->
+{{template "header" .}}
+{{template "lefter"}}
+
+    <bodyer>
+    <div id="content" class="container-fluid">
+    开始时间：<input type="input" class="span2" id="start"><i class="icon-calendar" onclick="c.showMoreDay = true;c.show(getObjById('start'),'2010-1-19',this)"></i> 结束时间：<input type="input" class="span2" id="end"><i class="icon-calendar" onclick="c.showMoreDay = true;c.show(getObjById('end'),'2010-1-19',this)"></i>
+    广告ID:<input id="adid" class="span2">
+    <button type="submit" class="btn" id="search">Submit</button>
+  <p> 
+       <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>广告ID</th>
+          <th>广告名称</th>
+          <th>IP</th>
+          <th>PV</th>
+          <th>注册</th>
+          <th>订单</th>
+          <th>金额</th>
+        </tr>
+      </thead>
+      <tbody id="countData">
+      </tbody>
+    </table>
+    <div class="btn-toolbar"></div>
+{{template "footer"}}
+</bodyer>
+    <script type="text/javascript">
+    var page = 0;
+    var offset = 20;
+    now = new Date();
+    var adid = getPar('adid') ? getPar('adid') : ''; 
+    var start = getPar('start') ? getPar('start') : now.getFullYear()+"-"+(now.getMonth())+"-"+now.getDate();
+    var end = getPar('end') ? getPar('end') : now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('#start').val(start);
+            $('#end').val(end);
+            $('#adid').val(adid);
+            getList(0, js_strto_time(start+" 00:00:00"), js_strto_time(end+" 23:59:59"), adid);
+            $('#search').click(function(){
+                start = $('#start').val();
+                end = $('#end').val();
+                adid = $('#adid').val();
+                getList(0, js_strto_time(start+" 00:00:00"), js_strto_time(end+" 23:59:59"), adid);
+            })
+        });
+    function getList(selectPage, startTemp, endTemp, id){
+        var temp;
+        var pageStr;
+        $.ajax({
+              type: "GET",
+              url: "/ajax/adlist/"+selectPage,
+              data: "start="+startTemp+"&end="+endTemp+"&adid="+adid+"",
+              async:false,
+              dataType: "json",
+              success: function(msg){
+                $.each(msg.adlist, function(i,item){
+                  pv = (item['IpCountArr'].PvCount == '') ? 0 : item['IpCountArr'].PvCount;
+                  ip = (item['IpCountArr'].IpCount == '') ? 0 : item['IpCountArr'].IpCount;
+                  reg = (item['RegCountArr'].RegCount == '') ? 0 : item['RegCountArr'].RegCount;
+                  order = (item['OrderCountArr'].OrderCount == '') ? 0 : item['OrderCountArr'].OrderCount;
+                  money = (item['OrderCountArr'].Money == '') ? 0 : item['OrderCountArr'].Money;
+                  temp += '<tr><td>'+item['Id']+'</td><td>'+item['Name']+'</td><td>'+ip+'</td><td>'+pv+'</td><td>'+reg+'</td><td>'+order+'</td><td>'+money+'</td></tr>';
+                });
+                if(msg.adlist == ""){
+                   $('#countData').html("");
+                 }else{
+                   $('#countData').html(temp);
+                 }
+               
+                pageCount = (Math.ceil(msg.count/offset)-1);
+                page = msg.page;
+                if(msg.count <= offset){
+                    pageStr = '<div class="btn-group"><a class="btn disabled">首页</a><a class="btn disabled">上一页</a><a class="btn">第'+(page+1)+'页</a><a class="btn disabled">下一页</a><a class="btn disabled">尾页</a></div>';
+                }else if(page == 0){
+                    pageStr = '<div class="btn-group"><a class="btn disabled">首页</a><a class="btn disabled">上一页</a><a class="btn">第'+(page+1)+'页</a><a class="btn selectPage" bindDate="'+(page+1)+'"">下一页</a><a class="btn selectPage" bindDate="'+pageCount+'">尾页</a></div>';
+                }else if(page == pageCount){
+                    pageStr = '<div class="btn-group"><a class="btn selectPage" bindDate="0">首页</a><a class="btn selectPage" bindDate="'+(page-1)+'">上一页</a><a class="btn">第'+(page+1)+'页</a><a class="btn disabled">下一页</a><a class="btn disabled">尾页</a></div>';
+                }else{
+                    pageStr = '<div class="btn-group"><a class="btn selectPage" bindDate="0">首页</a><a class="btn selectPage" bindDate="'+(page-1)+'">上一页</a><a class="btn selectPage">第'+(page+1)+'页</a><a class="btn selectPage" bindDate="'+(page+1)+'"">下一页</a><a class="btn selectPage" bindDate="'+pageCount+'">尾页</a></div>';
+                }
+                $('.btn-toolbar').html(pageStr);
+              }
+              
+            });
+            $('.selectPage').bind('click', function(){
+              pageTemp = $(this).attr("bindDate");
+              adid = $('#adid').val();
+              getList(pageTemp, start, end, adid)
+            })
+    }
+
+    function js_strto_time(str_time){
+        var new_str = str_time.replace(/:/g,'-');
+        new_str = new_str.replace(/ /g,'-');
+        var arr = new_str.split("-");
+        var datum = new Date(Date.UTC(arr[0],arr[1]-1,arr[2],arr[3]-8,arr[4],arr[5]));
+        return strtotime = datum.getTime()/1000;
+    }
+
+    function getPar(par){
+      var local_url = document.location.href; 
+      var get = local_url.indexOf(par +"=");
+      if(get == -1){
+        return false; 
+      } 
+      var get_par = local_url.slice(par.length + get + 1);  
+      var nextPar = get_par.indexOf("&");
+      if(nextPar != -1){
+        get_par = get_par.slice(0, nextPar);
+      }
+      return get_par;
+    }
+    </script>
+    
+  </body>
+</html>

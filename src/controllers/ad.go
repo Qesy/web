@@ -78,6 +78,7 @@ func (p *Entry)Ad_edit(w http.ResponseWriter, r *http.Request) {
 func (p *Entry)Ad_code(w http.ResponseWriter, r *http.Request) {
 	id := p.Params[0]
 	temp := tempInterface{}
+	temp["cTemp"] = Siteinfo()
 	adRs := ConnDb.GetAd(" WHERE id = "+id+"", "*", "")
 	temp["AdOne"] = adRs[0]
 	//-- 验证登录 --
@@ -90,5 +91,99 @@ func (p *Entry)Ad_code(w http.ResponseWriter, r *http.Request) {
 	temp["adminId"], _ = strconv.Atoi(adminId.Value)
 	temp["adminName"] = adminName.Value
 	t, _ := template.ParseFiles("templates/ad/code.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+//-- 以下为报表 --
+
+func (p *Entry)Ad_all(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	
+	temp["adCount"] = ConnDb.GetCount("", "")
+	t, _ := template.ParseFiles("templates/ad/all.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+func (p *Entry)Ad_ipreport(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	t, _ := template.ParseFiles("templates/ad/ipreport.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+func (p *Entry)Ad_pvreport(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	t, _ := template.ParseFiles("templates/ad/pvreport.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+func (p *Entry)Ad_regreport(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	t, _ := template.ParseFiles("templates/ad/regreport.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+func (p *Entry)Ad_loginreport(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	t, _ := template.ParseFiles("templates/ad/loginreport.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
+	t.Execute(w, temp)
+}
+
+func (p *Entry)Ad_buyreport(w http.ResponseWriter, r *http.Request) {
+	temp := tempInterface{}
+	//-- 验证登录 --
+	adminId,err := r.Cookie("adminId")
+	if err != nil{
+		fmt.Fprintf(w, Exec_script("alert('登录失败');history.back();"))
+		return
+	}
+	adminName,_ := r.Cookie("adminName")
+	temp["adminId"], _ = strconv.Atoi(adminId.Value)
+	temp["adminName"] = adminName.Value
+	t, _ := template.ParseFiles("templates/ad/buyreport.html", "templates/header.html", "templates/lefter.html", "templates/footer.html")
 	t.Execute(w, temp)
 }

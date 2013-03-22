@@ -1,7 +1,25 @@
 K 25
 svn:wc:ra_dav:version-url
-V 39
-/svn/web/!svn/ver/4/src/ad/templates/ad
+V 40
+/svn/web/!svn/ver/14/src/ad/templates/ad
+END
+pvreport.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/web/!svn/ver/25/src/ad/templates/ad/pvreport.html
+END
+ipreport.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/web/!svn/ver/24/src/ad/templates/ad/ipreport.html
+END
+loginreport.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/web/!svn/ver/24/src/ad/templates/ad/loginreport.html
 END
 edit.html
 K 25
@@ -21,9 +39,27 @@ svn:wc:ra_dav:version-url
 V 48
 /svn/web/!svn/ver/4/src/ad/templates/ad/add.html
 END
-code.html
+all.html
 K 25
 svn:wc:ra_dav:version-url
 V 49
-/svn/web/!svn/ver/4/src/ad/templates/ad/code.html
+/svn/web/!svn/ver/23/src/ad/templates/ad/all.html
+END
+regreport.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/web/!svn/ver/24/src/ad/templates/ad/regreport.html
+END
+code.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/web/!svn/ver/11/src/ad/templates/ad/code.html
+END
+buyreport.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/web/!svn/ver/24/src/ad/templates/ad/buyreport.html
 END
